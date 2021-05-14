@@ -19,6 +19,10 @@ Fork of dmenu with some patches applied and personal modifications.
 * Right button completes prompt with current selection (used to select next item)
 * Left/Up/Down buttons unchanged (Up/Down selects prev/next, Left selects prev when horizontal and moves cursor to left when vertical)
 
+### Colors
+
+* Separate scheme for border coloring: SchemeBorder (only the fg value is used)
+
 ## Personal config (only in config.h)
 
 * New font: dina-8:regular

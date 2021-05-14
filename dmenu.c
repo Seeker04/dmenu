@@ -30,7 +30,7 @@
 
 /* enums */
 enum { SchemeNorm, SchemeSel, SchemeNormHighlight, SchemeSelHighlight,
-       SchemeOut, SchemeLast }; /* color schemes */
+       SchemeOut, SchemeBorder, SchemeLast }; /* color schemes */
 
 struct item {
 	char *text;
@@ -864,7 +864,7 @@ setup(void)
 	                    CopyFromParent, CopyFromParent, CopyFromParent,
 	                    CWOverrideRedirect | CWBackPixel | CWEventMask, &swa);
 	if (border_width)
-		XSetWindowBorder(dpy, win, scheme[SchemeSel][ColBg].pixel);
+		XSetWindowBorder(dpy, win, scheme[SchemeBorder][ColFg].pixel);
 	XSetClassHint(dpy, win, &ch);
 
 
