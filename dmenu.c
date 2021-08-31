@@ -496,6 +496,11 @@ keypress(XKeyEvent *ev)
 		break;
 	}
 
+	/* Note: for some reason if I use Shift+Tab, then ksym is XK_ISO_Left_Tab instead of XK_Tab */
+	if (ksym == XK_ISO_Left_Tab && (ev->state & ShiftMask)) {
+		goto previtem;
+	}
+
 	if (ev->state & ControlMask) {
 		switch(ksym) {
 		case XK_a: ksym = XK_Home;      break;
@@ -616,11 +621,12 @@ insert:
 		break;
 	case XK_Left:
 	case XK_KP_Left:
+previtem:
 		if (cursor > 0 && (!sel || !sel->left || lines > 0)) {
 			cursor = nextrune(-1);
 			break;
 		}
-		if (lines > 0)
+		if (lines > 0 && ksym != XK_ISO_Left_Tab)
 			return;
 		/* fallthrough */
 	case XK_Up:
@@ -654,14 +660,11 @@ insert:
 		if (sel)
 			sel->out = 1;
 		break;
-	case XK_Right:
-	case XK_KP_Right:
+	case XK_Tab:
 		if (text[cursor] != '\0') {
 			cursor = nextrune(+1);
 			break;
 		}
-		if (lines > 0)
-			return;
 		/* fallthrough */
 	case XK_Down:
 	case XK_KP_Down:
@@ -670,7 +673,7 @@ insert:
 			calcoffsets();
 		}
 		break;
-	case XK_Tab:
+	case XK_Right:
 		if (!sel)
 			return;
 		strncpy(text, sel->text, sizeof text - 1);

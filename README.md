@@ -11,3 +11,11 @@ Fork of dmenu with some patches applied and personal modifications.
 * [instant](https://tools.suckless.org/dmenu/patches/instant/): with -n dmenu will auto select if only one matching option is left
 * [numbers](https://tools.suckless.org/dmenu/patches/numbers/): displays number of matched and total items
 
+## Personal modifications
+
+### Keymaps
+
+* Tab and Shift+Tab selects next/prev item (Tab used to complete prompt with selection)
+* Right button completes prompt with current selection (used to select next item)
+* Left/Up/Down buttons unchanged (Up/Down selects prev/next, Left selects prev when horizontal and moves cursor to left when vertical)
+
