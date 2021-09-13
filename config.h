@@ -14,10 +14,10 @@ static const char *fonts[] = {
 	"dina-8:regular"
 };
 
-#define USE_VOID_COLORS /* remove or comment out this line for gruvbox colors */
+#define USE_VOID_COLORS 1 /* if 0, gruvbox coloring will be used as fallback */
 
 static const char *colors[SchemeLast][2] = {
-#ifdef USE_VOID_COLORS /* void linux colors*/
+#if USE_VOID_COLORS /* void linux colors*/
 	/* scheme                  fg         bg       */
 	[SchemeNorm]          = { "#87af87", "#262626" },
 	[SchemeSel]           = { "#00af5f", "#191919" },
